@@ -27,7 +27,7 @@ function Login() {
   };
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate("/");
+    if (currentUser) navigate("/home");
   });
 
   return (

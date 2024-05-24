@@ -27,7 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "sonar": "sonar-scanner -Dproject.settings=./sonar.properties",
+    "sonar": "sonar-scanner -Dproject.settings=sonar.properties",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

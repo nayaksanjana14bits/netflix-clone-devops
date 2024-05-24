@@ -1,6 +1,7 @@
 {
   "name": "netflix-ui",
   "version": "0.1.0",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "@mui/material": "^5.15.18",

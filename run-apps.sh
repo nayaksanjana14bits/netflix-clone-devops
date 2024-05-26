@@ -4,17 +4,10 @@
 FRONTEND_DIR="netflix-ui"
 BACKEND_DIR="netflix-api"
 
-# Install pm2 globally if not already installed
-if ! command -v pm2 &> /dev/null
-then
-    echo "pm2 could not be found, installing globally..."
-    npm install -g pm2
-fi
-
-# Function to start a Node.js application using pm2
+# Function to install dependencies and start the application using pm2
 start_app() {
   APP_DIR=$1
-  APP_START_SCRIPT=$2
+  START_COMMAND=$2
 
   echo "Navigating to $APP_DIR..."
   cd $APP_DIR
@@ -22,16 +15,22 @@ start_app() {
   echo "Installing dependencies..."
   npm install
 
+  echo "Installing pm2 locally..."
+  npm install pm2
+
   echo "Starting the application using pm2..."
-  pm2 start $APP_START_SCRIPT --name $(basename $APP_DIR)
+  ./node_modules/pm2/bin/pm2 start $START_COMMAND
+
+  echo "Saving pm2 process list..."
+  ./node_modules/pm2/bin/pm2 save
 
   # Check if the application started successfully
-  if pm2 info $(basename $APP_DIR) | grep -q "online"
+  if ./node_modules/pm2/bin/pm2 info $(basename $APP_DIR) | grep -q "online"
   then
     echo "$(basename $APP_DIR) is running successfully."
   else
     echo "Failed to start $(basename $APP_DIR). Check the logs for details."
-    pm2 logs $(basename $APP_DIR)
+    ./node_modules/pm2/bin/pm2 logs $(basename $APP_DIR)
     exit 1
   fi
 

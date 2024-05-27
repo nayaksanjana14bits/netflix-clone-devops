@@ -38,10 +38,8 @@ start_app() {
   cd -
 }
 
-# Start the frontend (React) application
 start_app $FRONTEND_DIR "npm start"
 
-# Start the backend (Node.js) application
 start_app $BACKEND_DIR "yarn start"
 
 echo "Both applications are running in the background using pm2."

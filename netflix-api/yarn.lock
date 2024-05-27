@@ -710,6 +710,11 @@
   dependencies:
     "semver" "^7.5.3"
 
+"sonar-scanner@^3.1.0":
+  "integrity" "sha512-KD7W3wHCKJKAakhn8ckxNYTxkdb1cnJa3ot0NVvO8CCeJjb0yvF0fW2yGdI09zMHsqxCRsl4dLtyCL2SUv47WA=="
+  "resolved" "https://registry.npmjs.org/sonar-scanner/-/sonar-scanner-3.1.0.tgz"
+  "version" "3.1.0"
+
 "sparse-bitfield@^3.0.3":
   "integrity" "sha512-kvzhi7vqKTfkh0PZU+2D2PIllw2ymqJKujUcyPMd9Y75Nv4nPbGJZXNhxsgdQab2BmlDct1YnfQCguEvHr7VsQ=="
   "resolved" "https://registry.npmjs.org/sparse-bitfield/-/sparse-bitfield-3.0.3.tgz"

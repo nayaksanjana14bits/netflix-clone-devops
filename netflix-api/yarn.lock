@@ -3,6 +3,7 @@
 
 
 "@mongodb-js/saslprep@^1.1.5":
+
   "integrity" "sha512-dCHW/oEX0KJ4NjDULBo3JiOaK5+6axtpBbS+ao2ZInoAL9/YRQLhXzSNAFz7hP4nzLkIqsfYAK/PDE3+XHny0Q=="
   "resolved" "https://registry.npmjs.org/@mongodb-js/saslprep/-/saslprep-1.1.7.tgz"
   "version" "1.1.7"
@@ -472,7 +473,6 @@
   dependencies:
     "@types/whatwg-url" "^11.0.2"
     "whatwg-url" "^13.0.0"
-
 "mongodb@6.6.2":
   "integrity" "sha512-ZF9Ugo2JCG/GfR7DEb4ypfyJJyiKbg5qBYKRintebj8+DNS33CyGMkWbrS9lara+u+h+yEOGSRiLhFO/g1s1aw=="
   "resolved" "https://registry.npmjs.org/mongodb/-/mongodb-6.6.2.tgz"
@@ -709,6 +709,11 @@
   "version" "2.0.0"
   dependencies:
     "semver" "^7.5.3"
+
+"sonar-scanner@^3.1.0":
+  "integrity" "sha512-KD7W3wHCKJKAakhn8ckxNYTxkdb1cnJa3ot0NVvO8CCeJjb0yvF0fW2yGdI09zMHsqxCRsl4dLtyCL2SUv47WA=="
+  "resolved" "https://registry.npmjs.org/sonar-scanner/-/sonar-scanner-3.1.0.tgz"
+  "version" "3.1.0"
 
 "sparse-bitfield@^3.0.3":
   "integrity" "sha512-kvzhi7vqKTfkh0PZU+2D2PIllw2ymqJKujUcyPMd9Y75Nv4nPbGJZXNhxsgdQab2BmlDct1YnfQCguEvHr7VsQ=="

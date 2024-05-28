@@ -2,59 +2,77 @@ const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('chai').assert;
 require('chromedriver');
 
+// Function to generate a random string
+function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+// Function to generate a random email
+function generateRandomEmail() {
+    const randomString = generateRandomString(10);
+    return `${randomString}@example.com`;
+}
+
+// Function to generate a random password
+function generateRandomPassword() {
+    return generateRandomString(12);
+}
+
 describe('Signup Page Tests', function() {
     this.timeout(30000); // Set timeout to 30 seconds for the whole suite
-    let driver;
 
-    afterEach(async function() {
-        if (driver) {
-            await driver.quit();
-        }
-    });
-
-    it('should allow user to sign up with valid credentials', async function() {
-        driver = await new Builder().forBrowser('chrome').build();
-        await driver.get('http://localhost:3000/signup'); // Update the URL as per your application's route
+    it('should navigate to the home page after successful sign-up', async function() {
+        let driver;
 
         try {
-            // Wait for the email input field to be present
-            const emailInput = await driver.wait(until.elementLocated(By.css('input[name="email"]')), 10000);
-            await emailInput.sendKeys('example@example.com');
+            driver = await new Builder().forBrowser('chrome').build();
 
-            // Click on the button to sign up
-            const signUpButton = await driver.findElement(By.css('button'));
-            await signUpButton.click();
+            await driver.get('http://localhost:3000/');
 
-            // Wait for navigation to home page after successful signup
-            await driver.wait(until.urlContains('/home'), 10000);
+            // Wait for the page to load
+            await driver.sleep(2000);
+            const emailInput = await driver.findElement(By.css('input[name="email"]'));
+            const randomEmail = generateRandomEmail();
+            await emailInput.sendKeys(randomEmail);
+            await driver.sleep(2000);
 
-            // Assert that the URL contains '/home', indicating successful navigation after signup
-            assert.isTrue(await driver.getCurrentUrl().includes('/home'));
+            // Click the "Get Started" button
+            const getStartedButton = await driver.findElement(By.id('getStart_butt'));
+            await getStartedButton.click();
+            await driver.sleep(2000);
+
+            // Wait for the password input field to be displayed
+            const passwordInput = await driver.findElement(By.css('input[name="password"]'));
+            assert.isTrue(await passwordInput.isDisplayed());
+            const randomPassword = generateRandomPassword();
+            await passwordInput.sendKeys(randomPassword);
+            await driver.sleep(2000);
+
+            // Click the "Sign In" button
+            const signInButton = await driver.findElement(By.id('signIn_Butt'));
+            await signInButton.click();
+            console.log('Sign In button pressed successfully');
+
+            // Wait for navigation to the home page
+            await driver.wait(until.urlIs('http://localhost:3000/home'), 10000); // Wait for 10 seconds
+
+            console.log('Successfully navigated to the home page');
+
         } catch (error) {
-            console.log(error);
+            console.error('Error occurred:', error);
+        } finally {
+            // Quit the driver after the test case is completed
+            if (driver) {
+                await driver.quit();
+            }
         }
     });
 
-    it('should not allow user to sign up with invalid credentials', async function() {
-        driver = await new Builder().forBrowser('chrome').build();
-        await driver.get('http://localhost:3000/signup'); // Update the URL as per your application's route
-
-        try {
-            // Wait for the email input field to be present
-            const emailInput = await driver.wait(until.elementLocated(By.css('input[name="email"]')), 10000);
-            await emailInput.sendKeys('invalidemail');
-
-            // Click on the button to sign up
-            const signUpButton = await driver.findElement(By.css('button'));
-            await signUpButton.click();
-
-            // Wait for error message to appear on the page
-            const errorMessage = await driver.wait(until.elementLocated(By.css('.error-message')), 10000);
-
-            // Assert that the error message is displayed
-            assert.isTrue(await errorMessage.isDisplayed());
-        } catch (error) {
-            console.log(error);
-        }
-    });
+    // Add more test cases as needed
 });

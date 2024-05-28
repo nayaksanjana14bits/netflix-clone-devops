@@ -28,7 +28,7 @@ export default React.memo(function Card({ index, movieData, isLiked = false }) {
 
   const addToList = async () => {
     try {
-      await axios.post("http://localhost:5000/api/user/add", {
+      await axios.post("http://18.205.15.131:5000/api/user/add", {
         email,
         data: movieData,
       });
@@ -50,8 +50,8 @@ export default React.memo(function Card({ index, movieData, isLiked = false }) {
 
       {isHovered && (
         <div className="hover">
-          <div className="image-video-container">
-            <img
+          <div className="image-video-container" id="image_container" >
+            <img id="card_image"
               src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
               alt="card"
               onClick={() => navigate("/player")}
@@ -65,7 +65,7 @@ export default React.memo(function Card({ index, movieData, isLiked = false }) {
             />
           </div>
           <div className="info-container flex column">
-            <h3 className="name" onClick={() => navigate("/player")}>
+            <h3 id = "movie_title" className="name" onClick={() => navigate("/player")}>
               {movieData.name}
             </h3>
             <div className="icons flex j-between">
@@ -74,11 +74,11 @@ export default React.memo(function Card({ index, movieData, isLiked = false }) {
                   title="Play"
                   onClick={() => navigate("/player")}
                 />
-                <RiThumbUpFill title="Like" />
-                <RiThumbDownFill title="Dislike" />
+                <RiThumbUpFill id="liked" title="Like" />
+                <RiThumbDownFill id="dislike" title="Dislike" />
                 {isLiked ? (
-                  <BsCheck
-                    title="Remove from List"
+                  <BsCheck id="remove"
+                    title="Remove from List" 
                     onClick={() =>
                       dispatch(
                         removeMovieFromLiked({ movieId: movieData.id, email })
@@ -86,7 +86,7 @@ export default React.memo(function Card({ index, movieData, isLiked = false }) {
                     }
                   />
                 ) : (
-                  <AiOutlinePlus title="Add to my list" onClick={addToList} />
+                  <AiOutlinePlus id="add_to_list" title="Add to my list" onClick={addToList} />
                 )}
               </div>
               <div className="info">

@@ -1348,6 +1348,11 @@
   "resolved" "https://registry.npmjs.org/@eslint/js/-/js-8.57.0.tgz"
   "version" "8.57.0"
 
+"@faker-js/faker@^8.4.1":
+  version "8.4.1"
+  resolved "https://registry.npmjs.org/@faker-js/faker/-/faker-8.4.1.tgz"
+  integrity sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==
+
 "@fastify/busboy@^2.0.0":
   "integrity" "sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA=="
   "resolved" "https://registry.npmjs.org/@fastify/busboy/-/busboy-2.1.1.tgz"
@@ -5784,6 +5789,7 @@
     "locate-path" "^6.0.0"
     "path-exists" "^4.0.0"
 
+
 "firebase@^10.12.0":
   "integrity" "sha512-31UZyAK0+VZmF9jR/+6g31uyqWjBKsG+TV3ndRJEkw6+Skctb5ZX0+Ezq/pbC68iIRJ5TujOjyl632vTOqyS1w=="
   "resolved" "https://registry.npmjs.org/firebase/-/firebase-10.12.0.tgz"
@@ -9756,6 +9762,7 @@
   "integrity" "sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA=="
   "resolved" "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz"
   "version" "1.2.0"
+
   dependencies:
     "queue-microtask" "^1.2.2"
 

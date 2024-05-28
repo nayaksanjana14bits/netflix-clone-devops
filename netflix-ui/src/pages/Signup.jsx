@@ -70,10 +70,10 @@ function Signup() {
               />
             )}
             {!showPassword && (
-              <button onClick={() => setShowPassword(true)}>Get Started</button>
+              <button id="getStart_butt" onClick={() => setShowPassword(true)}>Get Started</button>
             )}
           </div>
-         <button onClick={handleSignIn}>Sign In</button>
+         <button id= "signIn_Butt" onClick={handleSignIn}>Sign In</button>
         </div>
       </div>
     </StyledContainer>

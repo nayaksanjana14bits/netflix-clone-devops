@@ -11,7 +11,7 @@ export default function Player() {
     <Container>
       <div className="player">
         <div className="back">
-          <BsArrowLeft onClick={() => navigate(-1)} />
+          <BsArrowLeft  id= "back_arrow" onClick={() => navigate(-1)} />
         </div>
         <video src={video} autoPlay loop controls muted />
       </div>

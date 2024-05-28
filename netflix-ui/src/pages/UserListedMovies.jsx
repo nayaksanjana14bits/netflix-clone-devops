@@ -40,7 +40,7 @@ export default function UserListedMovies() {
         <div className="grid flex">
           {movies.map((movie, index) => {
             return (
-              <Card
+              <Card id="card"
                 movieData={movie}
                 index={index}
                 key={movie.id}

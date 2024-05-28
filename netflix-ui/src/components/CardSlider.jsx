@@ -40,7 +40,7 @@ export default React.memo(function CardSlider({ data, title }) {
         </div>
         <div className="slider flex" ref={listRef}>
           {data.map((movie, index) => {
-            return <Card movieData={movie} index={index} key={movie.id} />;
+            return <Card id="card"movieData={movie} index={index} key={movie.id} />;
           })}
         </div>
         <div

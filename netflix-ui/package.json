@@ -1,6 +1,7 @@
 {
   "name": "netflix-ui",
   "version": "0.1.0",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
@@ -27,6 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "sonar": "sonar-scanner -Dproject.settings=sonar.properties",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,6 +53,7 @@
     "chai": "^4.3.4",
     "firebase-mock": "^2.3.2",
     "mocha": "^10.4.0",
-    "selenium-webdriver": "^4.21.0"
+    "selenium-webdriver": "^4.21.0",
+    "sonar-scanner": "^3.1.0"
   }
 }

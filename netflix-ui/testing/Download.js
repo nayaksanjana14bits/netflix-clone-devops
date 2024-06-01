@@ -2,7 +2,7 @@ const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('chai').assert;
 require('chromedriver');
 
-describe('Player Page Tests', function() {
+describe('Dowload Tests', function() {
     this.timeout(60000); // Increase timeout to 60 seconds for the whole suite
 
    

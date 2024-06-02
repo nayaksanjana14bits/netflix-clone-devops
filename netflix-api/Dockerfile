@@ -6,7 +6,10 @@ COPY package.json .
 
 RUN npm install --legacy-peer-deps
 
-COPY . .
+RUN useradd -m appuser
+USER appuser
+
+COPY --chown=appuser:appuser . .
 
 EXPOSE 5000
 

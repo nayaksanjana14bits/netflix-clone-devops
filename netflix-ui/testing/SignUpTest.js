@@ -1,8 +1,8 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require('chai').assert;
 require('chromedriver');
-// require('geckodriver');
-require('msedgedriver');
+require('geckodriver');
+// require('msedgedriver'); 
 const crypto = require('crypto');
 
 // Function to generate a random string
@@ -27,6 +27,20 @@ function generateRandomEmail() {
 function generateRandomPassword() {
     return generateRandomString(12);
 }
+
+const runTestInBrowserWithRetry = async (browserName, retryCount = 3) => {
+    let attempts = 0;
+    while (attempts < retryCount) {
+        try {
+            await runTestInBrowser(browserName);
+            return; // Test passed, no need to retry
+        } catch (error) {
+            console.error(`Error occurred in ${browserName}:`, error);
+            attempts++;
+        }
+    }
+    throw new Error(`Failed to run test in ${browserName} after ${retryCount} attempts`);
+};
 
 const runTestInBrowser = async (browserName) => {
     let driver;
@@ -63,8 +77,6 @@ const runTestInBrowser = async (browserName) => {
         await driver.wait(until.urlIs('http://localhost:3000/home'), 10000); // Wait for 10 seconds
 
         console.log('Successfully navigated to the home page');
-    } catch (error) {
-        console.error(`Error occurred in ${browserName}:`, error);
     } finally {
         // Quit the driver after the test case is completed
         if (driver) {
@@ -74,18 +86,15 @@ const runTestInBrowser = async (browserName) => {
 };
 
 describe('Signup Page Tests', function() {
-    this.timeout(30000); // Set timeout to 30 seconds for the whole suite
+    
+    this.timeout(10000); // Set timeout to 10 seconds for the whole suite
 
-    it('should navigate to the home page after successful sign-up in Chrome', async function() {
-        await runTestInBrowser('chrome');
-    });
-
-    it('should navigate to the home page after successful sign-up in Firefox', async function() {
-        await runTestInBrowser('firefox');
-    });
-
-    it('should navigate to the home page after successful sign-up in Edge', async function() {
-        await runTestInBrowser('MicrosoftEdge');
+    it('should navigate to the home page after successful sign-up in Chrome, Firefox, and Edge concurrently with retry', async function() {
+        await Promise.all([
+            runTestInBrowserWithRetry('chrome'),
+            runTestInBrowserWithRetry('firefox'),
+            runTestInBrowserWithRetry('MicrosoftEdge') // Ensure msedgedriver is installed and accessible in the system PATH or specify its path
+        ]);
     });
 
     // Add more test cases as needed

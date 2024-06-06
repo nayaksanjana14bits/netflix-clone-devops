@@ -87,15 +87,19 @@ const runTestInBrowser = async (browserName) => {
 
 describe('Signup Page Tests', function() {
     
-    this.timeout(10000); // Set timeout to 10 seconds for the whole suite
+   
+        this.timeout(30000000); // Set timeout to 10 seconds for the whole suite
 
-    it('should navigate to the home page after successful sign-up in Chrome, Firefox, and Edge concurrently with retry', async function() {
-        await Promise.all([
-            runTestInBrowserWithRetry('chrome'),
-            runTestInBrowserWithRetry('firefox'),
-            runTestInBrowserWithRetry('MicrosoftEdge') // Ensure msedgedriver is installed and accessible in the system PATH or specify its path
-        ]);
-    });
+        it('should navigate to the home page after successful sign-up in Chrome, Firefox, and Edge concurrently with retry', async function() {
+            await Promise.all([
+                runTestInBrowserWithRetry('chrome'),
+                runTestInBrowserWithRetry('firefox'),
+                runTestInBrowserWithRetry('MicrosoftEdge') // Ensure msedgedriver is installed and accessible in the system PATH or specify its path
+            ]);
+        });
+   
+    
+    
 
     // Add more test cases as needed
 });

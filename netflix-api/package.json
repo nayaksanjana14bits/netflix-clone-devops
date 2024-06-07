@@ -1,7 +1,6 @@
 {
   "name": "netflix-api",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -17,5 +16,6 @@
     "mongoose": "^8.4.0",
     "nodemon": "^3.1.0",
     "sonar-scanner": "^3.1.0"
-  }
+  },
+  "description": ""
 }
